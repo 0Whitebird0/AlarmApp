@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <Button
+        android:id="@+id/btnDatePicker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="날짜 선택"/>
+
+    <TextView
+        android:id="@+id/textSelectedDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="선택된 날짜: 없음"/>
+
+    <EditText
+        android:id="@+id/editTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="시간 (HH:mm)"
+        android:inputType="time"/>
+
+    <EditText
+        android:id="@+id/editEvent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="일정 이름"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="재생 파일 선택"
+        android:textSize="16sp"
+        android:textStyle="bold"/>
+
+    <Spinner
+        android:id="@+id/spinnerMp3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/btnSave"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="알림 저장"/>
+</LinearLayout>

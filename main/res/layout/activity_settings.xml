@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SettingsActivity"
+    android:padding="24dp">
+
+    <!-- 상단 툴바 -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_settings"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:title="설정"
+        android:titleTextColor="@android:color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- 알람 ON/OFF 스위치 (마진 없이 바로 아래) -->
+    <Switch
+        android:id="@+id/switch_alarm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="알람 기능"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_settings"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="20dp"/>
+
+    <!-- 다음에 해야할 일 + 남은 시간 박스 -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_next_task"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="6dp"
+        app:layout_constraintTop_toBottomOf="@id/switch_alarm"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <TextView
+                android:id="@+id/text_next_task"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="다음에 해야할 일: 없음"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/text_time_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="알람 시간: -"
+                android:textSize="16sp"
+                android:layout_marginTop="8dp"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
