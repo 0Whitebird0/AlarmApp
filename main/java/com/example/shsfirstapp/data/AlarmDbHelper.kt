@@ -10,6 +10,7 @@ import java.util.*
 class AlarmDbHelper private constructor(context: Context) :
     SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
+        //컴패니언 객체는 전역변수로 하나만 존재 상수개념
     companion object {
         private const val DATABASE_NAME = "AlarmDB"
         private const val DATABASE_VERSION = 3
@@ -29,6 +30,8 @@ class AlarmDbHelper private constructor(context: Context) :
         const val COLUMN_MP3_NAME = "name"
         const val COLUMN_MP3_PATH = "mp3_path"
 
+        // volatile 키워드는 최신값 유지를 위한 장치 
+        // syncronized사용으로 최신값 보장
         @Volatile
         private var INSTANCE: AlarmDbHelper? = null
 
@@ -60,6 +63,7 @@ class AlarmDbHelper private constructor(context: Context) :
         """.trimIndent())
     }
 
+    // 업그레이드 함수부분 수정 필요
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
         when (oldVersion) {
             1 -> {
@@ -72,6 +76,15 @@ class AlarmDbHelper private constructor(context: Context) :
         }
     }
 
+    
+/*쿼리문 형식 
+db.query(
+테이블명,
+가져올 컬럼 배열(또는 null - 모든 컬럼),
+조건절 문자열(WHERE),
+조건절에 들어갈 값 배열,
+groupBy, having, orderBy 등(없으면 모두 null)
+)*/
     fun getAllMp3s(): List<Mp3> {
         val mp3List = mutableListOf<Mp3>()
         val db = readableDatabase
@@ -196,3 +209,4 @@ class AlarmDbHelper private constructor(context: Context) :
         return SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
     }
 }
+
