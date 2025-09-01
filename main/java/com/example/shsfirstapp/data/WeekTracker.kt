@@ -24,6 +24,7 @@ class WeekTracker : ViewModel() {
     }
 
     // 이전 주로 이동
+    //해당 변수의 값이 있으면 그 값을, 없으면 현재 시간을 사용해 calendar의 기준 시간을 설정.
     fun moveToPreviousWeek() {
         val calendar = Calendar.getInstance().apply {
             timeInMillis = _currentWeek.value?.first ?: System.currentTimeMillis()
@@ -50,3 +51,4 @@ class WeekTracker : ViewModel() {
         _currentWeek.value = Pair(start, end)
     }
 }
+
